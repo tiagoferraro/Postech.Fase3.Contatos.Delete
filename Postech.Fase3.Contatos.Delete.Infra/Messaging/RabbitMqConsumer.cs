@@ -37,7 +37,9 @@ public class RabbitMqConsumer
             Password = rabbitMqConfig["Password"] ?? throw new ArgumentNullException(nameof(configuration)),
             Port = Convert.ToInt32(rabbitMqConfig["Port"]),
             NetworkRecoveryInterval = TimeSpan.FromSeconds(10),
-            RequestedHeartbeat = TimeSpan.FromSeconds(30)
+            RequestedHeartbeat = TimeSpan.FromSeconds(30),
+            AutomaticRecoveryEnabled = true,
+            TopologyRecoveryEnabled = true,
         };
         _serviceProvider = serviceProvider;
         _filaConsummer = rabbitMqConfig["QueueName"] ?? throw new ArgumentNullException(nameof(configuration));
